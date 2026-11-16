@@ -46,7 +46,7 @@
 }
 
 .demo-panel__value {
-  color: #ff6b3d;
+  color: #c84b31;
   font-variant-numeric: tabular-nums;
 }
 
@@ -54,7 +54,7 @@
   grid-column: 1 / -1;
   width: 100%;
   margin: 2px 0 0;
-  accent-color: #ff6b3d;
+  accent-color: #c84b31;
 }
 
 .demo-panel__check {
@@ -67,7 +67,7 @@
 }
 
 .demo-panel__check input {
-  accent-color: #ff6b3d;
+  accent-color: #c84b31;
 }
 
 .demo-panel__actions {
@@ -81,8 +81,8 @@
   height: 32px;
   border: 0;
   border-radius: 8px;
-  background: #ff6b3d;
-  color: #0b0b0f;
+  background: #c84b31;
+  color: #f0e5d8;
   font: inherit;
   font-weight: 600;
   cursor: pointer;

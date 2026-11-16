@@ -212,7 +212,7 @@ export class InkTransition {
 
   /**
    * Force fresh light/dark snapshots (e.g. after a language change).
-   * Never wipes GPU textures mid-spread — that would corrupt the live ink frame.
+   * Never wipes GPU textures mid-spread - that would corrupt the live ink frame.
    * Debounced so layout can settle after copy reflow before html2canvas runs.
    */
   recapture(): void {

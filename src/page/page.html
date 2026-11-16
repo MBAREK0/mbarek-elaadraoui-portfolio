@@ -24,7 +24,7 @@
       type="button"
       data-i18n-aria="theme.dark"
       aria-label="Dark mode"
-      aria-pressed="true"
+      aria-pressed="false"
       data-i18n-title="theme.toggle"
       title="Toggle dark mode (T)"
       data-ink-live
@@ -59,7 +59,7 @@
     </h1>
 
     <p class="hero__bio" data-i18n="hero.bio">
-      Java developer with hands-on experience on production Spring Boot systems — banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.
+      Java developer with hands-on experience on production Spring Boot systems - banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.
     </p>
 
     <div class="hero__actions">
@@ -77,17 +77,14 @@
   <section class="work container" id="work" aria-labelledby="work-title">
     <div class="section-head">
       <h2 class="section-head__title" id="work-title" data-i18n="work.title">Selected work</h2>
-      <span class="section-head__meta" data-i18n="work.meta">Agilisys · Jul 2025 – Present</span>
+      <span class="section-head__meta" data-i18n="work.meta">Agilisys · Jul 2025 - Present</span>
     </div>
 
     <ul class="projects" role="list">
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--tidal" aria-hidden="true">
-            <span class="tidal__sun"></span>
-            <span class="tidal__wave tidal__wave--1"></span>
-            <span class="tidal__wave tidal__wave--2"></span>
-            <span class="tidal__wave tidal__wave--3"></span>
+          <div class="project__visual">
+            <img src="/images/iam-rbac.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.iam.meta">WF RBAC · Spring Boot 3.2 · Java 17 · Angular 19</p>
@@ -122,16 +119,14 @@
 
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--field" aria-hidden="true">
-            <span class="field__glyph">SIMT</span>
-            <span class="field__rule"></span>
-            <span class="field__caption">Échange bancaire</span>
+          <div class="project__visual">
+            <img src="/images/banking-exchange.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.bank.meta">Échange bancaire · Spring Boot 3.5 · Spring Integration</p>
             <h3 class="project__title" data-i18n="work.bank.title">Banking exchange platform</h3>
             <p class="project__desc" data-i18n="work.bank.desc">
-              Multi-service platform for automatic debit exchange with Moroccan banks (SIMT): Appel ingestion, per-bank SIMT generation, SORT returns, CBS routing, and encaissement — with ops UI, KPI steering, and production observability.
+              Multi-service platform for automatic debit exchange with Moroccan banks (SIMT): Appel ingestion, per-bank SIMT generation, SORT returns, CBS routing, and encaissement - with ops UI, KPI steering, and production observability.
             </p>
             <p class="project__label" data-i18n="work.stack">Stack</p>
             <ul class="project__stack" role="list">
@@ -160,15 +155,12 @@
 
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--halo" aria-hidden="true">
-            <span class="halo__ring halo__ring--1"></span>
-            <span class="halo__ring halo__ring--2"></span>
-            <span class="halo__ring halo__ring--3"></span>
-            <span class="halo__core"></span>
+          <div class="project__visual">
+            <img src="/images/si-middleware.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.si.meta">Async API Gateway · SAGE / EBICS · RabbitMQ · OpenFeign</p>
-            <h3 class="project__title" data-i18n="work.si.title">SI middleware — XLoan / Payment Hub</h3>
+            <h3 class="project__title" data-i18n="work.si.title">SI middleware - XLoan / Payment Hub</h3>
             <p class="project__desc" data-i18n="work.si.desc">
               Event-driven Async API Gateway: sole consumer of XLoan RabbitMQ events, routing across dozens of interfaces and fluxes to downstream systems, with synchronous REST callbacks to XLoan and a plugin extension model. Also feeds the Payment Hub with client encaissements extracted from SAGE EBICS bank statements for reconciliation.
             </p>
@@ -199,10 +191,8 @@
 
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--field" aria-hidden="true">
-            <span class="field__glyph">API</span>
-            <span class="field__rule"></span>
-            <span class="field__caption">Réclamations</span>
+          <div class="project__visual">
+            <img src="/images/complaints-api.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.reclam.meta">Spring Boot 3.2 · Java 17 · PostgreSQL · Flyway</p>
@@ -236,11 +226,8 @@
 
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--tidal" aria-hidden="true">
-            <span class="tidal__sun"></span>
-            <span class="tidal__wave tidal__wave--1"></span>
-            <span class="tidal__wave tidal__wave--2"></span>
-            <span class="tidal__wave tidal__wave--3"></span>
+          <div class="project__visual">
+            <img src="/images/payroll-deduction.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.cliconv.meta">Clients conventionnés · Camunda · Spring Batch · Angular</p>
@@ -274,17 +261,14 @@
 
       <li>
         <article class="project">
-          <div class="project__visual card__thumb card__thumb--halo" aria-hidden="true">
-            <span class="halo__ring halo__ring--1"></span>
-            <span class="halo__ring halo__ring--2"></span>
-            <span class="halo__ring halo__ring--3"></span>
-            <span class="halo__core"></span>
+          <div class="project__visual">
+            <img src="/images/travel-agency.jpg" alt="" width="480" height="270" loading="lazy" decoding="async" />
           </div>
           <div class="project__body">
             <p class="project__meta" data-i18n="work.assfar.meta">Travel agency · Angular 21 · Spring Boot 3.4 · Java 21</p>
             <h3 class="project__title" data-i18n="work.assfar.title">Travel agency platform</h3>
             <p class="project__desc" data-i18n="work.assfar.desc">
-              Full-stack travel platform: public booking site and staff admin for catalog, trips, purchases, CRM/marketing, newsletter, omnichannel messaging, social publishing, and AI-assisted content — integrated with CRM, marketing automation, WhatsApp and workflow tools.
+              Full-stack travel platform: public booking site and staff admin for catalog, trips, purchases, CRM/marketing, newsletter, omnichannel messaging, social publishing, and AI-assisted content - integrated with CRM, marketing automation, WhatsApp and workflow tools.
             </p>
             <p class="project__label" data-i18n="work.stack">Stack</p>
             <ul class="project__stack" role="list">
@@ -328,15 +312,15 @@
         <ul class="timeline" role="list">
           <li class="timeline__item">
             <p class="timeline__role" data-i18n="about.exp.agilisys.role">Java Full-Stack Developer</p>
-            <p class="timeline__meta" data-i18n="about.exp.agilisys.meta">Agilisys · Remote · Jul 2025 – Present</p>
+            <p class="timeline__meta" data-i18n="about.exp.agilisys.meta">Agilisys · Remote · Jul 2025 - Present</p>
           </li>
           <li class="timeline__item">
             <p class="timeline__role" data-i18n="about.exp.industri.role">Web Developer</p>
-            <p class="timeline__meta" data-i18n="about.exp.industri.meta">IndustriCom Group · Casablanca · Apr – Jul 2025</p>
+            <p class="timeline__meta" data-i18n="about.exp.industri.meta">IndustriCom Group · Casablanca · Apr - Jul 2025</p>
           </li>
           <li class="timeline__item">
             <p class="timeline__role" data-i18n="about.exp.pchalle.role">Full-Stack Intern</p>
-            <p class="timeline__meta" data-i18n="about.exp.pchalle.meta">PC Halle · Tangier · May – Jul 2024</p>
+            <p class="timeline__meta" data-i18n="about.exp.pchalle.meta">PC Halle · Tangier · May - Jul 2024</p>
           </li>
         </ul>
       </div>
@@ -375,8 +359,8 @@
 
         <h3 class="about__heading about__heading--spaced" data-i18n="about.cert.title">Certifications</h3>
         <ul class="certs" role="list">
-          <li data-i18n="about.cert.oca">Oracle Certified Associate — Java SE 8 (2025)</li>
-          <li data-i18n="about.cert.ocp">Oracle Certified Professional — Java SE 17 (in progress)</li>
+          <li data-i18n="about.cert.oca">Oracle Certified Associate - Java SE 8 (2025)</li>
+          <li data-i18n="about.cert.ocp">Oracle Certified Professional - Java SE 17 (in progress)</li>
         </ul>
       </div>
     </div>
@@ -385,10 +369,6 @@
 
 <footer class="site-footer" id="contact">
   <div class="container footer">
-    <p class="footer__cta">
-      <span data-i18n="footer.cta">Building something that needs a solid backend? </span>
-      <a class="text-link" href="mailto:mbarekelaadraoui@gmail.com" data-i18n="footer.talk">Let's talk.</a>
-    </p>
     <div class="footer__row">
       <span data-i18n="footer.copy">© 2026 M'barek El Aadraoui</span>
       <ul class="footer__social" role="list">

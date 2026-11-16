@@ -20,8 +20,8 @@ export interface Snapshot {
 }
 
 const BACKGROUND: Record<Theme, string> = {
-  light: '#f6f4ef',
-  dark: '#0b0b0f',
+  light: '#f0e5d8',
+  dark: '#2e4052',
 };
 
 const isCoarsePointer = (): boolean => window.matchMedia('(pointer: coarse)').matches;

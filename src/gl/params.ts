@@ -27,6 +27,6 @@ export const inkParams: InkParams = {
 
 /** Pigment colour pooled at the frontier, keyed by the theme being revealed. */
 export const RIM_COLOR: Record<Theme, [number, number, number]> = {
-  dark: [0.0, 0.0, 0.01], // ink: a touch denser than the #0b0b0f page
-  light: [1.0, 0.996, 0.985], // bleach: a touch brighter than #f6f4ef
+  dark: [0.14, 0.2, 0.26], // ink: a touch denser than #2e4052
+  light: [0.97, 0.93, 0.88], // bleach: a touch brighter than #f0e5d8
 };

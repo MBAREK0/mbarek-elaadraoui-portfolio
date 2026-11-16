@@ -5,9 +5,9 @@ const STORAGE_KEY = 'portfolio:lang';
 type Dict = Record<string, string>;
 
 const en: Dict = {
-  'meta.title': "M'barek El Aadraoui — Java Full-Stack Developer",
+  'meta.title': "M'barek El Aadraoui - Java Full-Stack Developer",
   'meta.description':
-    "Portfolio of M'barek El Aadraoui — Java full-stack developer building production Spring Boot systems for banking, trade finance, and IAM.",
+    "Portfolio of M'barek El Aadraoui - Java full-stack developer building production Spring Boot systems for banking, trade finance, and IAM.",
 
   'nav.skip': 'Skip to content',
   'nav.home': "M'barek, home",
@@ -21,11 +21,11 @@ const en: Dict = {
   'hero.eyebrow': 'Java full-stack · Morocco',
   'hero.title': 'Building reliable systems<br /> for <em>real</em> production.',
   'hero.bio':
-    'Java developer with hands-on experience on production Spring Boot systems — banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.',
+    'Java developer with hands-on experience on production Spring Boot systems - banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.',
   'hero.cta': 'See selected work',
 
   'work.title': 'Selected work',
-  'work.meta': 'Agilisys · Jul 2025 – Present',
+  'work.meta': 'Agilisys · Jul 2025 - Present',
   'work.stack': 'Stack',
   'work.highlights': 'Highlights',
 
@@ -42,7 +42,7 @@ const en: Dict = {
   'work.bank.meta': 'Échange bancaire · Spring Boot 3.5 · Spring Integration',
   'work.bank.title': 'Banking exchange platform',
   'work.bank.desc':
-    'Multi-service platform for automatic debit exchange with Moroccan banks (SIMT): Appel ingestion, per-bank SIMT generation, SORT returns, CBS routing, and encaissement — with ops UI, KPI steering, and production observability.',
+    'Multi-service platform for automatic debit exchange with Moroccan banks (SIMT): Appel ingestion, per-bank SIMT generation, SORT returns, CBS routing, and encaissement - with ops UI, KPI steering, and production observability.',
   'work.bank.f1': 'Five pipelines: Appel, SIMT out, SORT in, CBS routage, Encaissement',
   'work.bank.f2': 'Bank-specific SIMT generators and SORT readers (ABB, AWB, BCP, BMCI, BOA, CDM, SGMA)',
   'work.bank.f3': 'JDBC message store, archive/error folders, HA scheduling with ShedLock',
@@ -50,7 +50,7 @@ const en: Dict = {
   'work.bank.f5': 'Actuator, Prometheus, OpenTelemetry, structured logs, JaCoCo / Sonar',
 
   'work.si.meta': 'Async API Gateway · SAGE / EBICS · RabbitMQ · OpenFeign',
-  'work.si.title': 'SI middleware — XLoan / Payment Hub',
+  'work.si.title': 'SI middleware - XLoan / Payment Hub',
   'work.si.desc':
     'Event-driven Async API Gateway: sole consumer of XLoan RabbitMQ events, routing across dozens of interfaces and fluxes to downstream systems, with synchronous REST callbacks to XLoan and a plugin extension model. Also feeds the Payment Hub with client encaissements extracted from SAGE EBICS bank statements for reconciliation.',
   'work.si.f1': 'Declarative flux catalogue driving queues, DLQs, and inbound REST paths',
@@ -82,7 +82,7 @@ const en: Dict = {
   'work.assfar.meta': 'Travel agency · Angular 21 · Spring Boot 3.4 · Java 21',
   'work.assfar.title': 'Travel agency platform',
   'work.assfar.desc':
-    'Full-stack travel platform: public booking site and staff admin for catalog, trips, purchases, CRM/marketing, newsletter, omnichannel messaging, social publishing, and AI-assisted content — integrated with CRM, marketing automation, WhatsApp and workflow tools.',
+    'Full-stack travel platform: public booking site and staff admin for catalog, trips, purchases, CRM/marketing, newsletter, omnichannel messaging, social publishing, and AI-assisted content - integrated with CRM, marketing automation, WhatsApp and workflow tools.',
   'work.assfar.f1': 'Public booking site + admin portal (catalog, trips, purchases, finance)',
   'work.assfar.f2': 'Booking lifecycle with domain events over RabbitMQ',
   'work.assfar.f3': 'CRM, marketing automation and newsletter integrations',
@@ -96,27 +96,25 @@ const en: Dict = {
 
   'about.exp.title': 'Experience',
   'about.exp.agilisys.role': 'Java Full-Stack Developer',
-  'about.exp.agilisys.meta': 'Agilisys · Remote · Jul 2025 – Present',
+  'about.exp.agilisys.meta': 'Agilisys · Remote · Jul 2025 - Present',
   'about.exp.industri.role': 'Web Developer',
-  'about.exp.industri.meta': 'IndustriCom Group · Casablanca · Apr – Jul 2025',
+  'about.exp.industri.meta': 'IndustriCom Group · Casablanca · Apr - Jul 2025',
   'about.exp.pchalle.role': 'Full-Stack Intern',
-  'about.exp.pchalle.meta': 'PC Halle · Tangier · May – Jul 2024',
+  'about.exp.pchalle.meta': 'PC Halle · Tangier · May - Jul 2024',
 
   'about.skills.title': 'Skills',
   'about.cert.title': 'Certifications',
-  'about.cert.oca': 'Oracle Certified Associate — Java SE 8 (2025)',
-  'about.cert.ocp': 'Oracle Certified Professional — Java SE 17 (in progress)',
+  'about.cert.oca': 'Oracle Certified Associate - Java SE 8 (2025)',
+  'about.cert.ocp': 'Oracle Certified Professional - Java SE 17 (in progress)',
 
-  'footer.cta': 'Building something that needs a solid backend? ',
-  'footer.talk': "Let's talk.",
   'footer.copy': "© 2026 M'barek El Aadraoui",
   'footer.city': 'Casablanca',
 };
 
 const fr: Dict = {
-  'meta.title': "M'barek El Aadraoui — Développeur Full-Stack Java",
+  'meta.title': "M'barek El Aadraoui - Développeur Full-Stack Java",
   'meta.description':
-    "Portfolio de M'barek El Aadraoui — développeur full-stack Java sur des systèmes Spring Boot en production (banque, trade-finance, IAM).",
+    "Portfolio de M'barek El Aadraoui - développeur full-stack Java sur des systèmes Spring Boot en production (banque, trade-finance, IAM).",
 
   'nav.skip': 'Aller au contenu',
   'nav.home': "M'barek, accueil",
@@ -130,11 +128,11 @@ const fr: Dict = {
   'hero.eyebrow': 'Full-stack Java · Maroc',
   'hero.title': 'Des systèmes fiables<br /> pour la <em>vraie</em> production.',
   'hero.bio':
-    'Développeur Java avec de l’expérience pratique sur des systèmes Spring Boot en production — banque, trade-finance et IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, et intégration d’outils IA/LLM.',
+    'Développeur Java avec de l’expérience pratique sur des systèmes Spring Boot en production - banque, trade-finance et IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, et intégration d’outils IA/LLM.',
   'hero.cta': 'Voir les projets',
 
   'work.title': 'Projets sélectionnés',
-  'work.meta': 'Agilisys · Juil. 2025 – Présent',
+  'work.meta': 'Agilisys · Juil. 2025 - Présent',
   'work.stack': 'Stack',
   'work.highlights': 'Points clés',
 
@@ -151,7 +149,7 @@ const fr: Dict = {
   'work.bank.meta': 'Échange bancaire · Spring Boot 3.5 · Spring Integration',
   'work.bank.title': 'Plateforme d’échange bancaire',
   'work.bank.desc':
-    'Plateforme multi-services pour les prélèvements automatiques avec les banques marocaines (SIMT) : ingestion Appel, génération SIMT par banque, retours SORT, routage CBS et encaissement — avec UI ops, pilotage KPI et observabilité production.',
+    'Plateforme multi-services pour les prélèvements automatiques avec les banques marocaines (SIMT) : ingestion Appel, génération SIMT par banque, retours SORT, routage CBS et encaissement - avec UI ops, pilotage KPI et observabilité production.',
   'work.bank.f1': 'Cinq pipelines : Appel, SIMT out, SORT in, routage CBS, Encaissement',
   'work.bank.f2': 'Générateurs SIMT et lecteurs SORT par banque (ABB, AWB, BCP, BMCI, BOA, CDM, SGMA)',
   'work.bank.f3': 'Message store JDBC, dossiers archive/erreur, scheduling HA avec ShedLock',
@@ -159,7 +157,7 @@ const fr: Dict = {
   'work.bank.f5': 'Actuator, Prometheus, OpenTelemetry, logs structurés, JaCoCo / Sonar',
 
   'work.si.meta': 'Async API Gateway · SAGE / EBICS · RabbitMQ · OpenFeign',
-  'work.si.title': 'Backend middleware SI — XLoan / Hub de paiement',
+  'work.si.title': 'Backend middleware SI - XLoan / Hub de paiement',
   'work.si.desc':
     'Async API Gateway événementiel : consommateur unique des événements RabbitMQ XLoan, routage vers des dizaines d’interfaces et de flux vers les systèmes aval, callbacks REST synchrones vers XLoan et modèle d’extensions plugin. Alimente aussi le Hub de paiement avec les encaissements clients extraits des relevés bancaires EBICS dans SAGE, pour la réconciliation.',
   'work.si.f1': 'Catalogue de flux déclaratif (files, DLQ, APIs inbound)',
@@ -191,7 +189,7 @@ const fr: Dict = {
   'work.assfar.meta': 'Agence de voyage · Angular 21 · Spring Boot 3.4 · Java 21',
   'work.assfar.title': 'Plateforme agence de voyage',
   'work.assfar.desc':
-    'Plateforme travel full-stack : site de réservation public et admin (catalogue, circuits, achats, CRM/marketing, newsletter, messagerie omnicanale, publication sociale et contenus assistés par IA) — intégrée CRM, automation marketing, WhatsApp et workflows.',
+    'Plateforme travel full-stack : site de réservation public et admin (catalogue, circuits, achats, CRM/marketing, newsletter, messagerie omnicanale, publication sociale et contenus assistés par IA) - intégrée CRM, automation marketing, WhatsApp et workflows.',
   'work.assfar.f1': 'Site public de réservation + portail admin (catalogue, circuits, achats, finance)',
   'work.assfar.f2': 'Cycle de vie des réservations avec événements métier sur RabbitMQ',
   'work.assfar.f3': 'Intégrations CRM, automation marketing et newsletter',
@@ -205,19 +203,17 @@ const fr: Dict = {
 
   'about.exp.title': 'Expérience',
   'about.exp.agilisys.role': 'Développeur Full-Stack Java',
-  'about.exp.agilisys.meta': 'Agilisys · Télétravail · Juil. 2025 – Présent',
+  'about.exp.agilisys.meta': 'Agilisys · Télétravail · Juil. 2025 - Présent',
   'about.exp.industri.role': 'Développeur Web',
-  'about.exp.industri.meta': 'IndustriCom Group · Casablanca · Avr. – Juil. 2025',
+  'about.exp.industri.meta': 'IndustriCom Group · Casablanca · Avr. - Juil. 2025',
   'about.exp.pchalle.role': 'Stagiaire Full-Stack',
-  'about.exp.pchalle.meta': 'PC Halle · Tanger · Mai – Juil. 2024',
+  'about.exp.pchalle.meta': 'PC Halle · Tanger · Mai - Juil. 2024',
 
   'about.skills.title': 'Compétences',
   'about.cert.title': 'Certifications',
-  'about.cert.oca': 'Oracle Certified Associate — Java SE 8 (2025)',
-  'about.cert.ocp': 'Oracle Certified Professional — Java SE 17 (en cours)',
+  'about.cert.oca': 'Oracle Certified Associate - Java SE 8 (2025)',
+  'about.cert.ocp': 'Oracle Certified Professional - Java SE 17 (en cours)',
 
-  'footer.cta': 'Un backend solide à construire ? ',
-  'footer.talk': 'Parlons-en.',
   'footer.copy': "© 2026 M'barek El Aadraoui",
   'footer.city': 'Casablanca',
 };

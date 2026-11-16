@@ -1,5 +1,5 @@
 /*
- * Ink Bleed — portfolio page
+ * Ink Bleed - portfolio page
  *
  * html2canvas compatibility notes (the page is snapshotted in later phases):
  *  - colors are hex / rgba only (no oklch, color-mix, relative colors)
@@ -25,44 +25,44 @@
 
 html[data-theme='light'] {
   color-scheme: light;
-  --bg: #f6f4ef;
-  --surface: #fdfbf7;
-  --text: #15141a;
-  --text-soft: #3b3940;
-  --muted: #77736b;
-  --line: rgba(21, 20, 26, 0.1);
-  --line-strong: rgba(21, 20, 26, 0.18);
-  --accent: #d4471f;
-  --accent-ink: #fdfbf7;
-  --focus: #d4471f;
+  --bg: #f0e5d8;
+  --surface: #faf6f0;
+  --text: #2e4052;
+  --text-soft: #3d5164;
+  --muted: #6b7c85;
+  --line: rgba(46, 64, 82, 0.12);
+  --line-strong: rgba(46, 64, 82, 0.22);
+  --accent: #c84b31;
+  --accent-ink: #f0e5d8;
+  --focus: #c84b31;
 
-  --thumb-1: #e8e2d4;
-  --thumb-2: #ebe7df;
-  --thumb-3: #e3e1dc;
-  --thumb-ink: #15141a;
-  --thumb-wave: #1d1c22;
-  --thumb-soft: rgba(21, 20, 26, 0.14);
+  --thumb-1: #a5c9ca;
+  --thumb-2: #e8dcc8;
+  --thumb-3: #d9bf77;
+  --thumb-ink: #2e4052;
+  --thumb-wave: #2e4052;
+  --thumb-soft: rgba(46, 64, 82, 0.14);
 }
 
 html[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #0b0b0f;
-  --surface: #121218;
-  --text: #f2efe8;
-  --text-soft: #c9c5bd;
-  --muted: #8a8791;
-  --line: rgba(242, 239, 232, 0.09);
-  --line-strong: rgba(242, 239, 232, 0.18);
-  --accent: #ff6b3d;
-  --accent-ink: #0b0b0f;
-  --focus: #ff6b3d;
+  --bg: #2e4052;
+  --surface: #384e61;
+  --text: #f0e5d8;
+  --text-soft: #a5c9ca;
+  --muted: #d9bf77;
+  --line: rgba(240, 229, 216, 0.12);
+  --line-strong: rgba(240, 229, 216, 0.22);
+  --accent: #c84b31;
+  --accent-ink: #f0e5d8;
+  --focus: #c84b31;
 
-  --thumb-1: #17161d;
-  --thumb-2: #15151b;
-  --thumb-3: #18171e;
-  --thumb-ink: #f2efe8;
-  --thumb-wave: #2c2b34;
-  --thumb-soft: rgba(242, 239, 232, 0.12);
+  --thumb-1: #243443;
+  --thumb-2: #2e4052;
+  --thumb-3: #3d5164;
+  --thumb-ink: #f0e5d8;
+  --thumb-wave: #a5c9ca;
+  --thumb-soft: rgba(240, 229, 216, 0.12);
 }
 
 /* ---------- Base ---------- */
@@ -315,8 +315,8 @@ ul[role='list'] {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #2f9e6a;
-  box-shadow: 0 0 0 4px rgba(47, 158, 106, 0.16);
+  background: #a5c9ca;
+  box-shadow: 0 0 0 4px rgba(165, 201, 202, 0.28);
 }
 
 .hero__title {
@@ -440,7 +440,7 @@ ul[role='list'] {
 
 .project {
   display: grid;
-  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
   gap: clamp(24px, 3vw, 40px);
   align-items: start;
   width: 100%;
@@ -453,10 +453,18 @@ ul[role='list'] {
 .project__visual {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: calc(var(--radius) - 4px);
+  background: var(--bg);
+}
+
+.project__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project__body {
@@ -534,7 +542,7 @@ ul[role='list'] {
   overflow: hidden;
 }
 
-/* Thumb 1 — Tidal: sun over layered waves */
+/* Thumb 1 - Tidal: sun over layered waves */
 .card__thumb--tidal {
   background: var(--thumb-1);
 }
@@ -576,7 +584,7 @@ ul[role='list'] {
   background: var(--thumb-wave);
 }
 
-/* Thumb 2 — Field Notes: big italic specimen */
+/* Thumb 2 - Field Notes: big italic specimen */
 .card__thumb--field {
   display: flex;
   flex-direction: column;
@@ -614,7 +622,7 @@ ul[role='list'] {
   text-transform: uppercase;
 }
 
-/* Thumb 3 — Halo: concentric rings */
+/* Thumb 3 - Halo: concentric rings */
 .card__thumb--halo {
   background: var(--thumb-3);
 }
@@ -747,26 +755,12 @@ ul[role='list'] {
   padding-bottom: 40px;
 }
 
-.footer__cta {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 2.6vw, 34px);
-  font-weight: 380;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
-.footer__cta .text-link {
-  font-style: italic;
-  font-weight: 380;
-}
-
 .footer__row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 16px 32px;
-  margin-top: 40px;
   color: var(--muted);
   font-size: 13.5px;
 }
