@@ -19,6 +19,14 @@ export interface Snapshot {
   ms: number;
 }
 
+export interface CaptureOptions {
+  /**
+   * Fast first paint for the ink toggle: skip decoding project photos in the clone
+   * and use a lower scale. A later full capture upgrades the GPU textures.
+   */
+  draft?: boolean;
+}
+
 const BACKGROUND: Record<Theme, string> = {
   light: '#f0e5d8',
   dark: '#2e4052',
@@ -30,6 +38,27 @@ const isCoarsePointer = (): boolean => window.matchMedia('(pointer: coarse)').ma
 export function renderScale(): number {
   const cap = isCoarsePointer() ? 1.5 : 2;
   return Math.min(window.devicePixelRatio || 1, cap);
+}
+
+/** True once fonts + project thumbnails have loaded (for a quality recapture). */
+export async function whenAssetsReady(): Promise<void> {
+  await document.fonts.ready;
+  const imgs = Array.from(document.querySelectorAll<HTMLImageElement>('.project__visual img'));
+  await Promise.all(
+    imgs.map(async (img) => {
+      if (!img.complete) {
+        await new Promise<void>((resolve) => {
+          img.addEventListener('load', () => resolve(), { once: true });
+          img.addEventListener('error', () => resolve(), { once: true });
+        });
+      }
+      try {
+        await img.decode();
+      } catch {
+        /* broken image — still proceed */
+      }
+    }),
+  );
 }
 
 export function documentSize(): { width: number; height: number } {
@@ -46,15 +75,22 @@ export function layoutKey(scale: number): string {
   return `${width}x${height}@${scale}`;
 }
 
-export async function capturePage(theme: Theme, scale: number, maxTextureSize: number): Promise<Snapshot> {
+export async function capturePage(
+  theme: Theme,
+  scale: number,
+  maxTextureSize: number,
+  opts: CaptureOptions = {},
+): Promise<Snapshot> {
   const t0 = performance.now();
   const key = layoutKey(scale);
   const { width, height } = documentSize();
+  const draft = opts.draft === true;
 
-  // Never exceed what the GPU can hold; the shader handles scale != canvas DPR.
-  const safeScale = Math.min(scale, maxTextureSize / width, maxTextureSize / height);
+  // Tall pages + big JPGs: keep capture scale modest so dual-theme prep stays snappy.
+  const area = width * height;
+  const areaCap = draft ? 0.75 : area > 1_800_000 ? 1 : area > 1_000_000 ? 1.25 : scale;
+  const safeScale = Math.min(scale, areaCap, maxTextureSize / width, maxTextureSize / height);
 
-  // Lazy-loaded: html2canvas is ~200 KB and only needed after first paint.
   const { default: html2canvas } = await import('html2canvas');
   const canvas = await html2canvas(document.body, {
     scale: safeScale,
@@ -65,19 +101,25 @@ export async function capturePage(theme: Theme, scale: number, maxTextureSize: n
     height,
     scrollX: 0,
     scrollY: 0,
-    // The clone iframe renders without a scrollbar, so give it the live page's
-    // scrollbar-less width; otherwise centred content shifts by half a scrollbar.
     windowWidth: width,
     windowHeight: document.documentElement.clientHeight,
     logging: false,
     useCORS: true,
+    // Draft must not stall on photo decode; full capture still bounds waits.
+    imageTimeout: draft ? 0 : 1500,
     onclone: (doc) => {
       doc.documentElement.dataset.theme = theme;
-      // The live toggle is drawn above the overlay, so leave a hole for it. `visibility`
-      // (not data-html2canvas-ignore) keeps its box in the layout so the nav doesn't shift.
       doc.querySelectorAll<HTMLElement>('[data-ink-live]').forEach((el) => {
         el.style.visibility = 'hidden';
       });
+      if (draft) {
+        // Keep the 16:9 frames, skip painting multi‑MB JPEGs for the first toggle.
+        doc.querySelectorAll<HTMLImageElement>('.project__visual img').forEach((img) => {
+          img.removeAttribute('src');
+          img.removeAttribute('srcset');
+          img.style.visibility = 'hidden';
+        });
+      }
     },
   });
 

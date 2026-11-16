@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { capturePage, layoutKey, renderScale } from '../capture/capture';
+import { capturePage, layoutKey, renderScale, whenAssetsReady } from '../capture/capture';
 import { inkParams } from '../gl/params';
 import { InkRenderer, type InkFrame, type InkSource } from '../gl/renderer';
 import { applyTheme, getTheme, otherTheme, type Theme } from './theme';
@@ -62,6 +62,12 @@ export class InkTransition {
   private captureQueued = false;
   private forceRecapture = false;
   private resizeTimer = 0;
+  /** Until the first dual-theme capture finishes, ignore image-driven layout noise. */
+  private bootstrapped = false;
+  /** First dual capture skips project photos; then we upgrade once assets are ready. */
+  private needsDraft = true;
+  private assetsReady = false;
+  private qualityDone = false;
 
   constructor(canvas: HTMLCanvasElement, toggleButton: HTMLButtonElement | null, opts: { webgl?: boolean } = {}) {
     this.toggleButton = toggleButton;
@@ -84,14 +90,34 @@ export class InkTransition {
     window.addEventListener('resize', () => {
       this.renderer?.resize(renderScale());
       if (this.frame) this.draw();
-      this.scheduleCapture(RESIZE_DEBOUNCE_MS);
+      if (this.bootstrapped) this.scheduleCapture(RESIZE_DEBOUNCE_MS);
     });
     // Catches document-height changes that aren't window resizes (late fonts, images).
-    new ResizeObserver(() => this.scheduleCapture(RESIZE_DEBOUNCE_MS)).observe(document.body);
+    new ResizeObserver(() => {
+      if (this.bootstrapped) this.scheduleCapture(RESIZE_DEBOUNCE_MS);
+    }).observe(document.body);
     // Snapshots are skipped under reduced motion; take them if the preference is lifted.
     reducedMotion.addEventListener('change', () => this.scheduleCapture(0));
 
-    void document.fonts.ready.then(() => this.scheduleCapture(0));
+    // Draft capture ASAP so the ink toggle works before multi‑MB photos finish.
+    void import('html2canvas');
+    this.scheduleCapture(0);
+    void this.watchAssetsForQualityPass();
+  }
+
+  private async watchAssetsForQualityPass(): Promise<void> {
+    try {
+      await whenAssetsReady();
+    } catch {
+      /* still mark ready and upgrade */
+    }
+    this.assetsReady = true;
+    if (!this.renderer || this.renderer.isLost || reducedMotion.matches || this.qualityDone) return;
+    // Draft already on GPU: overwrite with full photos (no invalidate → no ink gap).
+    if (this.bootstrapped && this.needsDraft === false) {
+      this.forceRecapture = true;
+      this.scheduleCapture(0);
+    }
   }
 
   get isWebGL(): boolean {
@@ -221,6 +247,7 @@ export class InkTransition {
       this.captureQueued = true;
       return;
     }
+    // Language / content changes: wipe so captureAll rebuilds both themes.
     this.renderer?.invalidateThemes();
     this.scheduleCapture(RESIZE_DEBOUNCE_MS);
   }
@@ -322,23 +349,26 @@ export class InkTransition {
       return;
     }
 
-    if (this.forceRecapture) {
-      renderer.invalidateThemes();
-      this.forceRecapture = false;
-    }
-
     const scale = renderScale();
     const key = layoutKey(scale);
     const current = getTheme();
-    const themes: Theme[] = [current, otherTheme(current)].filter((t) => !renderer.hasValid(t, key));
+    const draft = this.needsDraft;
+    // Quality / lang refresh: overwrite both themes without wiping first (no ink gap).
+    const refreshBoth = this.forceRecapture;
+    this.forceRecapture = false;
+
+    const themes: Theme[] = refreshBoth
+      ? [current, otherTheme(current)]
+      : [current, otherTheme(current)].filter((t) => !renderer.hasValid(t, key));
     this.captureQueued = false;
     if (themes.length === 0) return;
 
     const gen = ++this.captureGen;
     this.capturing = true;
+    let dualReady = false;
     try {
       for (const theme of themes) {
-        const snap = await capturePage(theme, scale, renderer.maxTextureSize);
+        const snap = await capturePage(theme, scale, renderer.maxTextureSize, { draft });
         if (gen !== this.captureGen) return;
         if (snap.key !== layoutKey(renderScale())) {
           // Layout changed while capturing; this snapshot is already stale.
@@ -348,14 +378,28 @@ export class InkTransition {
         renderer.upload(snap);
         if (import.meta.env.DEV) {
           console.debug(
-            `[ink] captured ${theme} ${snap.canvas.width}×${snap.canvas.height} in ${snap.ms.toFixed(0)}ms`,
+            `[ink] captured ${theme}${draft ? ' (draft)' : ''} ${snap.canvas.width}×${snap.canvas.height} in ${snap.ms.toFixed(0)}ms`,
           );
         }
+      }
+      const readyKey = layoutKey(renderScale());
+      dualReady = renderer.hasValid('light', readyKey) && renderer.hasValid('dark', readyKey);
+      if (dualReady) {
+        this.bootstrapped = true;
+        if (draft) this.needsDraft = false;
+        else this.qualityDone = true;
       }
     } catch (err) {
       console.error('[ink] capture failed', err);
     } finally {
       this.capturing = false;
+    }
+
+    // Draft landed and photos are already decoded: kick the quality pass now.
+    if (dualReady && !this.needsDraft && this.assetsReady && !this.qualityDone) {
+      this.forceRecapture = true;
+      this.scheduleCapture(0);
+      return;
     }
     if (this.captureQueued) this.scheduleCapture(RESIZE_DEBOUNCE_MS);
   }
