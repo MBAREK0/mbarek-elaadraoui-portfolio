@@ -1,25 +1,31 @@
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
 
 <header class="site-header">
   <div class="container nav">
-    <a class="wordmark" href="#" aria-label="Codemure, home">
+    <a class="wordmark" href="#" data-i18n-aria="nav.home" aria-label="M'barek, home">
       <span class="wordmark__dot" aria-hidden="true"></span>
-      Codemure
+      M'barek
     </a>
 
     <nav class="nav__links" aria-label="Primary">
-      <a href="#work" aria-current="page">Work</a>
-      <a href="#about">About</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact">Contact</a>
+      <a href="#work" aria-current="page" data-i18n="nav.work">Work</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
+
+    <div class="lang-toggle" role="group" data-i18n-aria="nav.lang" aria-label="Language">
+      <button type="button" class="lang-toggle__btn" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang-toggle__btn" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
 
     <button
       class="theme-toggle"
       id="theme-toggle"
       type="button"
+      data-i18n-aria="theme.dark"
       aria-label="Dark mode"
-      aria-pressed="false"
+      aria-pressed="true"
+      data-i18n-title="theme.toggle"
       title="Toggle dark mode (T)"
       data-ink-live
     >
@@ -45,97 +51,351 @@
   <section class="hero container" aria-labelledby="hero-title">
     <p class="eyebrow">
       <span class="status-dot" aria-hidden="true"></span>
-      Independent product designer · Lisbon · Booking spring 2027
+      <span data-i18n="hero.eyebrow">Java full-stack · Morocco</span>
     </p>
 
-    <h1 class="hero__title" id="hero-title">
-      Designing quiet interfaces<br />
-      for <em>loud</em> ideas.
+    <h1 class="hero__title" id="hero-title" data-i18n-html="hero.title">
+      Building reliable systems<br /> for <em>real</em> production.
     </h1>
 
-    <p class="hero__bio">
-      I help early-stage teams turn tangled products into calm, legible tools — from first
-      sketch to shipped design system. Previously design lead at a Series B fintech and a small type foundry.
+    <p class="hero__bio" data-i18n="hero.bio">
+      Java developer with hands-on experience on production Spring Boot systems — banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.
     </p>
 
     <div class="hero__actions">
       <a class="button button--primary" href="#work">
-        See selected work
+        <span data-i18n="hero.cta">See selected work</span>
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" />
         </svg>
       </a>
-      <a class="text-link" href="mailto:hello@codemure.com">hello@codemure.com</a>
+      <a class="text-link" href="mailto:mbarekelaadraoui@gmail.com">mbarekelaadraoui@gmail.com</a>
     </div>
   </section>
 
   <section class="work container" id="work" aria-labelledby="work-title">
     <div class="section-head">
-      <h2 class="section-head__title" id="work-title">Selected work</h2>
-      <span class="section-head__meta">2023 — 2026</span>
+      <h2 class="section-head__title" id="work-title" data-i18n="work.title">Selected work</h2>
+      <span class="section-head__meta" data-i18n="work.meta">Agilisys · Jul 2025 – Present</span>
     </div>
 
-    <ul class="cards" role="list">
+    <ul class="projects" role="list">
       <li>
-        <a class="card" href="#tidal">
-          <div class="card__thumb card__thumb--tidal" aria-hidden="true">
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--tidal" aria-hidden="true">
             <span class="tidal__sun"></span>
             <span class="tidal__wave tidal__wave--1"></span>
             <span class="tidal__wave tidal__wave--2"></span>
             <span class="tidal__wave tidal__wave--3"></span>
           </div>
-          <div class="card__body">
-            <p class="card__meta">Fintech · iOS &amp; Web · 2026</p>
-            <h3 class="card__title">Tidal — a calmer way to bank</h3>
-            <p class="card__desc">Rebuilt onboarding and the money-movement flows; support tickets fell 38%.</p>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.iam.meta">WF RBAC · Spring Boot 3.2 · Java 17 · Angular 19</p>
+            <h3 class="project__title" data-i18n="work.iam.title">IAM / RBAC platform</h3>
+            <p class="project__desc" data-i18n="work.iam.desc">
+              Centralized entitlement platform covering the full access lifecycle: request, hierarchical approval, Keycloak or manual provisioning, revocation, and audit. Also acts as an HR identity hub syncing AgiRH CSV batches into Active Directory and Keycloak.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 17</li>
+              <li>Spring Boot 3.2</li>
+              <li>Keycloak 23</li>
+              <li>PostgreSQL</li>
+              <li>Liquibase</li>
+              <li>Spring Batch / Quartz</li>
+              <li>LDAP / AD</li>
+              <li>Angular 19</li>
+              <li>PrimeNG</li>
+              <li>MapStruct</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.iam.f1">Multi-level workflow (N+1 / N+2) for profile and role requests</li>
+              <li data-i18n="work.iam.f2">Multi-server / multi-realm Keycloak provisioning with sync retry</li>
+              <li data-i18n="work.iam.f3">AgiRH batch import → AD + Keycloak + RBAC database</li>
+              <li data-i18n="work.iam.f4">Auto-revocation, dérogations, AD rapprochement and Keycloak review</li>
+              <li data-i18n="work.iam.f5">Manual operator tasks for non-integrated apps + full audit trail</li>
+            </ul>
           </div>
-        </a>
+        </article>
       </li>
+
       <li>
-        <a class="card" href="#field-notes">
-          <div class="card__thumb card__thumb--field" aria-hidden="true">
-            <span class="field__glyph">Ff</span>
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--field" aria-hidden="true">
+            <span class="field__glyph">SIMT</span>
             <span class="field__rule"></span>
-            <span class="field__caption">Field Notes · Vol. 04</span>
+            <span class="field__caption">Échange bancaire</span>
           </div>
-          <div class="card__body">
-            <p class="card__meta">Editorial · Type system · 2025</p>
-            <h3 class="card__title">Field Notes Quarterly</h3>
-            <p class="card__desc">A modular reading experience and variable-type system for a print-first magazine.</p>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.bank.meta">Échange bancaire · Spring Boot 3.5 · Spring Integration</p>
+            <h3 class="project__title" data-i18n="work.bank.title">Banking exchange platform</h3>
+            <p class="project__desc" data-i18n="work.bank.desc">
+              Multi-service platform for automatic debit exchange with Moroccan banks (SIMT): Appel ingestion, per-bank SIMT generation, SORT returns, CBS routing, and encaissement — with ops UI, KPI steering, and production observability.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 17</li>
+              <li>Spring Boot 3.5</li>
+              <li>Spring Integration</li>
+              <li>PostgreSQL</li>
+              <li>ShedLock</li>
+              <li>OpenCSV</li>
+              <li>JWT / Jasypt</li>
+              <li>Prometheus / OTEL</li>
+              <li>Angular 19</li>
+              <li>PrimeNG</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.bank.f1">Five pipelines: Appel, SIMT out, SORT in, CBS routage, Encaissement</li>
+              <li data-i18n="work.bank.f2">Bank-specific SIMT generators and SORT readers (ABB, AWB, BCP, BMCI, BOA, CDM, SGMA)</li>
+              <li data-i18n="work.bank.f3">JDBC message store, archive/error folders, HA scheduling with ShedLock</li>
+              <li data-i18n="work.bank.f4">Backend REST + Angular ops UI + dedicated KPI / steering service</li>
+              <li data-i18n="work.bank.f5">Actuator, Prometheus, OpenTelemetry, structured logs, JaCoCo / Sonar</li>
+            </ul>
           </div>
-        </a>
+        </article>
       </li>
+
       <li>
-        <a class="card" href="#halo">
-          <div class="card__thumb card__thumb--halo" aria-hidden="true">
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--halo" aria-hidden="true">
             <span class="halo__ring halo__ring--1"></span>
             <span class="halo__ring halo__ring--2"></span>
             <span class="halo__ring halo__ring--3"></span>
             <span class="halo__core"></span>
           </div>
-          <div class="card__body">
-            <p class="card__meta">Hardware · Companion app · 2024</p>
-            <h3 class="card__title">Halo Home Controller</h3>
-            <p class="card__desc">Ambient controls for a smart-lighting puck, from industrial sketches to firmware UI.</p>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.si.meta">Async API Gateway · SAGE / EBICS · RabbitMQ · OpenFeign</p>
+            <h3 class="project__title" data-i18n="work.si.title">SI middleware — XLoan / Payment Hub</h3>
+            <p class="project__desc" data-i18n="work.si.desc">
+              Event-driven Async API Gateway: sole consumer of XLoan RabbitMQ events, routing across dozens of interfaces and fluxes to downstream systems, with synchronous REST callbacks to XLoan and a plugin extension model. Also feeds the Payment Hub with client encaissements extracted from SAGE EBICS bank statements for reconciliation.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 21</li>
+              <li>Spring Boot 3.5</li>
+              <li>Spring Cloud</li>
+              <li>RabbitMQ</li>
+              <li>OpenFeign</li>
+              <li>Resilience4j</li>
+              <li>SAGE / EBICS</li>
+              <li>PostgreSQL / Flyway</li>
+              <li>Spring Batch</li>
+              <li>Prometheus</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.si.f1">Declarative flux catalogue driving queues, DLQs, and inbound REST paths</li>
+              <li data-i18n="work.si.f2">Plugin JARs per interface without modifying the closed core</li>
+              <li data-i18n="work.si.f3">Standardized event handler pipeline: enrich → validate → process → notify</li>
+              <li data-i18n="work.si.f4">SAGE EBICS → RabbitMQ → Payment Hub: scheduled extraction, watermark, mapping, ACK</li>
+              <li data-i18n="work.si.f5">Format validation, error/archive files, idempotency, DLQ and functional journaling</li>
+            </ul>
           </div>
-        </a>
+        </article>
+      </li>
+
+      <li>
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--field" aria-hidden="true">
+            <span class="field__glyph">API</span>
+            <span class="field__rule"></span>
+            <span class="field__caption">Réclamations</span>
+          </div>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.reclam.meta">Spring Boot 3.2 · Java 17 · PostgreSQL · Flyway</p>
+            <h3 class="project__title" data-i18n="work.reclam.title">Customer complaints API</h3>
+            <p class="project__desc" data-i18n="work.reclam.desc">
+              REST API for customer request and complaint lifecycle in a credit-institution context: create, track, update status, attach references, and verify a tamper-evident audit trail.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 17</li>
+              <li>Spring Boot 3.2</li>
+              <li>Spring Security</li>
+              <li>OAuth2 / API key</li>
+              <li>PostgreSQL</li>
+              <li>Flyway</li>
+              <li>OpenAPI</li>
+              <li>Jasypt</li>
+              <li>JaCoCo / Sonar</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.reclam.f1">Full request lifecycle with filters, pagination and status transitions</li>
+              <li data-i18n="work.reclam.f2">Append-only audit events with SHA-256 hashing and hash chaining</li>
+              <li data-i18n="work.reclam.f3">Integrity verification endpoint for the event chain</li>
+              <li data-i18n="work.reclam.f4">Notification proxy (SMS / email) with local mock for development</li>
+              <li data-i18n="work.reclam.f5">Contract-driven API envelope, OpenAPI docs and automated tests</li>
+            </ul>
+          </div>
+        </article>
+      </li>
+
+      <li>
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--tidal" aria-hidden="true">
+            <span class="tidal__sun"></span>
+            <span class="tidal__wave tidal__wave--1"></span>
+            <span class="tidal__wave tidal__wave--2"></span>
+            <span class="tidal__wave tidal__wave--3"></span>
+          </div>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.cliconv.meta">Clients conventionnés · Camunda · Spring Batch · Angular</p>
+            <h3 class="project__title" data-i18n="work.cliconv.title">Partner payroll-deduction platform</h3>
+            <p class="project__desc" data-i18n="work.cliconv.desc">
+              Platform for partner-employer payroll deduction on consumer credit: ingest expected deductions and payment statements, reconcile gaps, run installment deferral workflows, detect salary-assignment clauses in PDFs, and steer treasury KPIs.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 17</li>
+              <li>Spring Boot</li>
+              <li>Camunda BPM</li>
+              <li>Spring Batch</li>
+              <li>PostgreSQL</li>
+              <li>JWT / OTP</li>
+              <li>Tess4j / PDFBox</li>
+              <li>Angular 17 / 19</li>
+              <li>PrimeNG</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.cliconv.f1">Tombée and règlement file intake with Spring Batch jobs</li>
+              <li data-i18n="work.cliconv.f2">Reconciliation of expected vs paid amounts (écarts)</li>
+              <li data-i18n="work.cliconv.f3">Camunda BPMN workflows for installment deferral requests</li>
+              <li data-i18n="work.cliconv.f4">OCR batch to detect CDS clauses in scanned PDFs</li>
+              <li data-i18n="work.cliconv.f5">Operations UI and dedicated treasury KPI dashboards</li>
+            </ul>
+          </div>
+        </article>
+      </li>
+
+      <li>
+        <article class="project">
+          <div class="project__visual card__thumb card__thumb--halo" aria-hidden="true">
+            <span class="halo__ring halo__ring--1"></span>
+            <span class="halo__ring halo__ring--2"></span>
+            <span class="halo__ring halo__ring--3"></span>
+            <span class="halo__core"></span>
+          </div>
+          <div class="project__body">
+            <p class="project__meta" data-i18n="work.assfar.meta">Travel agency · Angular 21 · Spring Boot 3.4 · Java 21</p>
+            <h3 class="project__title" data-i18n="work.assfar.title">Travel agency platform</h3>
+            <p class="project__desc" data-i18n="work.assfar.desc">
+              Full-stack travel platform: public booking site and staff admin for catalog, trips, purchases, CRM/marketing, newsletter, omnichannel messaging, social publishing, and AI-assisted content — integrated with CRM, marketing automation, WhatsApp and workflow tools.
+            </p>
+            <p class="project__label" data-i18n="work.stack">Stack</p>
+            <ul class="project__stack" role="list">
+              <li>Java 21</li>
+              <li>Spring Boot 3.4</li>
+              <li>Angular 21</li>
+              <li>PostgreSQL / Flyway</li>
+              <li>RabbitMQ</li>
+              <li>Redis / MinIO</li>
+              <li>JWT</li>
+              <li>Docker Compose</li>
+              <li>n8n</li>
+            </ul>
+            <p class="project__label" data-i18n="work.highlights">Highlights</p>
+            <ul class="project__features" role="list">
+              <li data-i18n="work.assfar.f1">Public booking site + admin portal (catalog, trips, purchases, finance)</li>
+              <li data-i18n="work.assfar.f2">Booking lifecycle with domain events over RabbitMQ</li>
+              <li data-i18n="work.assfar.f3">CRM, marketing automation and newsletter integrations</li>
+              <li data-i18n="work.assfar.f4">WhatsApp / omnichannel inbox bridge and social OAuth publishing</li>
+              <li data-i18n="work.assfar.f5">Dockerized stack with AI content helpers and workflow automation</li>
+            </ul>
+          </div>
+        </article>
       </li>
     </ul>
+  </section>
+
+  <section class="about container" id="about" aria-labelledby="about-title">
+    <div class="section-head">
+      <h2 class="section-head__title" id="about-title" data-i18n="about.title">About</h2>
+      <span class="section-head__meta" data-i18n="about.meta">Profile</span>
+    </div>
+
+    <p class="about__lead" data-i18n="about.lead">
+      Full-stack Java specialist (YouCode / UM6P). Currently at Agilisys on production Spring Boot platforms spanning IAM, banking exchange, SI middleware, complaints, payroll deduction and travel. Previously web development at IndustriCom Group and a Symfony e-commerce internship at PC Halle.
+    </p>
+
+    <div class="about__grid">
+      <div class="about__block">
+        <h3 class="about__heading" data-i18n="about.exp.title">Experience</h3>
+        <ul class="timeline" role="list">
+          <li class="timeline__item">
+            <p class="timeline__role" data-i18n="about.exp.agilisys.role">Java Full-Stack Developer</p>
+            <p class="timeline__meta" data-i18n="about.exp.agilisys.meta">Agilisys · Remote · Jul 2025 – Present</p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__role" data-i18n="about.exp.industri.role">Web Developer</p>
+            <p class="timeline__meta" data-i18n="about.exp.industri.meta">IndustriCom Group · Casablanca · Apr – Jul 2025</p>
+          </li>
+          <li class="timeline__item">
+            <p class="timeline__role" data-i18n="about.exp.pchalle.role">Full-Stack Intern</p>
+            <p class="timeline__meta" data-i18n="about.exp.pchalle.meta">PC Halle · Tangier · May – Jul 2024</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="about__block">
+        <h3 class="about__heading" data-i18n="about.skills.title">Skills</h3>
+        <ul class="skills" role="list">
+          <li>Java 17 / 21</li>
+          <li>Spring Boot 3</li>
+          <li>Spring Integration</li>
+          <li>Spring Batch</li>
+          <li>Spring Security</li>
+          <li>Keycloak</li>
+          <li>OAuth2 / OIDC</li>
+          <li>Active Directory</li>
+          <li>LDAP</li>
+          <li>RabbitMQ</li>
+          <li>SAGE / EBICS</li>
+          <li>Camunda BPM</li>
+          <li>OpenFeign</li>
+          <li>Resilience4j</li>
+          <li>PostgreSQL</li>
+          <li>Liquibase / Flyway</li>
+          <li>Angular</li>
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>Docker</li>
+          <li>Jenkins</li>
+          <li>SonarQube</li>
+          <li>Prometheus</li>
+          <li>OpenTelemetry</li>
+          <li>Grafana</li>
+          <li>AWS</li>
+          <li>LLM / RAG</li>
+        </ul>
+
+        <h3 class="about__heading about__heading--spaced" data-i18n="about.cert.title">Certifications</h3>
+        <ul class="certs" role="list">
+          <li data-i18n="about.cert.oca">Oracle Certified Associate — Java SE 8 (2025)</li>
+          <li data-i18n="about.cert.ocp">Oracle Certified Professional — Java SE 17 (in progress)</li>
+        </ul>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer class="site-footer" id="contact">
   <div class="container footer">
-    <p class="footer__cta">Have something worth making quieter? <a class="text-link" href="mailto:hello@codemure.com">Let’s talk.</a></p>
+    <p class="footer__cta">
+      <span data-i18n="footer.cta">Building something that needs a solid backend? </span>
+      <a class="text-link" href="mailto:mbarekelaadraoui@gmail.com" data-i18n="footer.talk">Let's talk.</a>
+    </p>
     <div class="footer__row">
-      <span>© 2026 Codemure</span>
+      <span data-i18n="footer.copy">© 2026 M'barek El Aadraoui</span>
       <ul class="footer__social" role="list">
-        <li><a href="#">Read.cv</a></li>
-        <li><a href="#">Dribbble</a></li>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">GitHub</a></li>
+        <li><a href="mailto:mbarekelaadraoui@gmail.com">Email</a></li>
+        <li><a href="https://linkedin.com/in/mbarek-el-aadraoui" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/MBAREK0" target="_blank" rel="noopener noreferrer">GitHub</a></li>
       </ul>
-      <span class="footer__local">Lisbon · <span id="local-time">--:--</span></span>
+      <span class="footer__local"><span data-i18n="footer.city">Casablanca</span> · <span id="local-time">--:--</span></span>
     </div>
   </div>
 </footer>

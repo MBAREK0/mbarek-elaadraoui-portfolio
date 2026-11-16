@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { mountPage } from './page/mount';
 import { startAutoMode } from './ui/autoMode';
 import { DemoPanel, loadSettings } from './ui/demoPanel';
+import { applyLanguage, getLocale, type Locale } from './ui/i18n';
 import { InkTransition, SPREAD } from './ui/inkTransition';
 import { applyTheme, getTheme } from './ui/theme';
 
@@ -37,6 +38,16 @@ toggle?.addEventListener('click', (e) => {
   // detail === 0 means a keyboard-activated click (Enter/Space): spread from the button.
   ink.toggle(e.detail === 0 ? undefined : { x: e.clientX, y: e.clientY });
   panel.refresh();
+});
+
+app.querySelectorAll<HTMLButtonElement>('.lang-toggle__btn[data-lang]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const next = btn.dataset.lang as Locale | undefined;
+    if (!next || next === getLocale()) return;
+    applyLanguage(next, app);
+    // Wait a frame so reflow from longer/shorter copy lands before capture scheduling.
+    requestAnimationFrame(() => ink.recapture());
+  });
 });
 
 // Text-entry fields swallow shortcuts; sliders and checkboxes in the demo panel don't.

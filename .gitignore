@@ -16,6 +16,9 @@ dist-ssr
 !.env.example
 coverage
 
+# Personal / sensitive local materials — never publish
+mbarek-elaadraoui/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

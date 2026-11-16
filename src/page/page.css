@@ -17,7 +17,7 @@
   --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-  --container: 1180px;
+  --container: 1400px;
   --gutter: clamp(20px, 4vw, 48px);
   --radius: 14px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -206,6 +206,46 @@ ul[role='list'] {
   background: var(--accent);
 }
 
+/* ---------- Language toggle ---------- */
+
+.lang-toggle {
+  /* Stays under the ink canvas (no z-index) so theme spreads paint over it cleanly. */
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.lang-toggle__btn {
+  min-width: 34px;
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-toggle__btn[aria-pressed='true'] {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.lang-toggle__btn:hover:not([aria-pressed='true']) {
+  color: var(--text);
+}
+
 /* ---------- Theme toggle ---------- */
 
 .theme-toggle {
@@ -392,60 +432,106 @@ ul[role='list'] {
   font-variant-numeric: tabular-nums;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 28px);
-}
-
-.card {
+.projects {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  gap: clamp(28px, 4vw, 48px);
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(200px, 240px) minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+  align-items: start;
+  width: 100%;
+  padding: clamp(20px, 2.5vw, 32px);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  overflow: hidden;
-  transition: transform 0.35s var(--ease-out), border-color 0.25s var(--ease-out);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--line-strong);
-}
-
-.card__thumb {
+.project__visual {
   position: relative;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  aspect-ratio: 1;
   overflow: hidden;
-  border-bottom: 1px solid var(--line);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 4px);
 }
 
-.card__body {
-  padding: 20px 22px 24px;
+.project__body {
+  min-width: 0;
+  width: 100%;
 }
 
-.card__meta {
+.project__meta {
   color: var(--muted);
   font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 
-.card__title {
+.project__title {
   margin-top: 8px;
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: clamp(22px, 2.4vw, 28px);
   font-weight: 460;
   line-height: 1.2;
   letter-spacing: -0.015em;
 }
 
-.card__desc {
-  margin-top: 8px;
+.project__desc {
+  margin-top: 12px;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.project__label {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project__stack li {
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-soft);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.project__features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.project__features li {
   color: var(--text-soft);
   font-size: 14.5px;
-  line-height: 1.55;
+  line-height: 1.5;
+}
+
+.card__thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
 }
 
 /* Thumb 1 — Tidal: sun over layered waves */
@@ -566,6 +652,90 @@ ul[role='list'] {
   background: var(--thumb-ink);
 }
 
+/* ---------- About ---------- */
+
+.about {
+  padding-bottom: clamp(72px, 12vh, 140px);
+}
+
+.about__lead {
+  max-width: 62ch;
+  margin-bottom: 40px;
+  color: var(--text-soft);
+  font-size: clamp(16px, 1.25vw, 18px);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.about__heading {
+  margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 460;
+  letter-spacing: -0.01em;
+}
+
+.about__heading--spaced {
+  margin-top: 32px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.timeline__item {
+  padding-left: 16px;
+  border-left: 2px solid var(--line-strong);
+}
+
+.timeline__role {
+  font-size: 15.5px;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+}
+
+.timeline__meta {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skills li {
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.certs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.certs li {
+  color: var(--text-soft);
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -621,16 +791,12 @@ ul[role='list'] {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .project {
+    grid-template-columns: 1fr;
   }
 
-  .cards li:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .cards li:last-child .card__thumb {
-    aspect-ratio: 16 / 7;
+  .project__visual {
+    max-width: 320px;
   }
 }
 
@@ -663,20 +829,28 @@ ul[role='list'] {
     flex-shrink: 0;
   }
 
+  .lang-toggle__btn {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
   .eyebrow {
     font-size: 12.5px;
   }
 
+  /* Hidden on small screens; titles include a space after <br> so words don't smash. */
   .hero__title br {
     display: none;
   }
 
-  .cards {
+  .about__grid {
     grid-template-columns: 1fr;
   }
 
-  .cards li:last-child .card__thumb {
-    aspect-ratio: 4 / 3;
+  .project__visual {
+    max-width: none;
   }
 
   .footer__row {
@@ -686,7 +860,7 @@ ul[role='list'] {
 }
 
 @media (max-width: 420px) {
-  .nav__links a[href="#journal"] {
+  .nav__links a[href="#about"] {
     display: none;
   }
 }

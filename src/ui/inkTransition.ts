@@ -60,6 +60,7 @@ export class InkTransition {
   private captureGen = 0;
   private capturing = false;
   private captureQueued = false;
+  private forceRecapture = false;
   private resizeTimer = 0;
 
   constructor(canvas: HTMLCanvasElement, toggleButton: HTMLButtonElement | null, opts: { webgl?: boolean } = {}) {
@@ -209,6 +210,21 @@ export class InkTransition {
     this.icon?.setTimeScale(scale);
   }
 
+  /**
+   * Force fresh light/dark snapshots (e.g. after a language change).
+   * Never wipes GPU textures mid-spread — that would corrupt the live ink frame.
+   * Debounced so layout can settle after copy reflow before html2canvas runs.
+   */
+  recapture(): void {
+    this.forceRecapture = true;
+    if (this.frame || this.capturing || document.documentElement.classList.contains('theme-fade')) {
+      this.captureQueued = true;
+      return;
+    }
+    this.renderer?.invalidateThemes();
+    this.scheduleCapture(RESIZE_DEBOUNCE_MS);
+  }
+
   private currentFrame(): InkFrame | null {
     if (!this.frame) return null;
     const { progress, time } = this.state;
@@ -304,6 +320,11 @@ export class InkTransition {
     if (this.capturing || this.frame || document.documentElement.classList.contains('theme-fade')) {
       this.captureQueued = true;
       return;
+    }
+
+    if (this.forceRecapture) {
+      renderer.invalidateThemes();
+      this.forceRecapture = false;
     }
 
     const scale = renderScale();

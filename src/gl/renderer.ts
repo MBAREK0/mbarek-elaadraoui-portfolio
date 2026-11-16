@@ -167,6 +167,11 @@ export class InkRenderer {
     return !this.lost && this.textures.get(theme)?.key === key;
   }
 
+  /** Drop theme snapshots so the next capture rebuilds both light and dark. */
+  invalidateThemes(): void {
+    this.textures.clear();
+  }
+
   /**
    * Renders `frame` (normally: exactly what is on screen) into an offscreen texture that
    * later frames can use as `from: 'composite'`. Two textures ping-pong, so a frame that
