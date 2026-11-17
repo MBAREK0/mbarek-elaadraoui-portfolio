@@ -23,6 +23,7 @@ const en: Dict = {
   'hero.bio':
     'Java developer with hands-on experience on production Spring Boot systems - banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.',
   'hero.cta': 'See selected work',
+  'hero.cv': 'Download CV',
 
   'work.title': 'Selected work',
   'work.meta': 'Agilisys · Jul 2025 - Present',
@@ -130,6 +131,7 @@ const fr: Dict = {
   'hero.bio':
     'Développeur Java avec de l’expérience pratique sur des systèmes Spring Boot en production - banque, trade-finance et IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, et intégration d’outils IA/LLM.',
   'hero.cta': 'Voir les projets',
+  'hero.cv': 'Télécharger le CV',
 
   'work.title': 'Projets sélectionnés',
   'work.meta': 'Agilisys · Juil. 2025 - Présent',
@@ -283,4 +285,12 @@ export function applyLanguage(locale: Locale, root: ParentNode = document): void
     const active = btn.dataset.lang === locale;
     btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
+
+  const cv = root.querySelector<HTMLAnchorElement>('#cv-download');
+  if (cv) {
+    const href = locale === 'fr' ? cv.dataset.cvFr : cv.dataset.cvEn;
+    const name = locale === 'fr' ? cv.dataset.cvNameFr : cv.dataset.cvNameEn;
+    if (href) cv.href = href;
+    if (name) cv.setAttribute('download', name);
+  }
 }

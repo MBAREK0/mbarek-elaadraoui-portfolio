@@ -6,6 +6,7 @@ import './ui/bootLoader.css';
 import { DemoPanel, loadSettings } from './ui/demoPanel';
 import { applyLanguage, getLocale, type Locale } from './ui/i18n';
 import { InkTransition, SPREAD } from './ui/inkTransition';
+import { startPortraitFloat } from './ui/portraitFloat';
 import { applyTheme, getTheme } from './ui/theme';
 
 const app = document.querySelector<HTMLDivElement>('#app');
@@ -13,6 +14,7 @@ if (!app) throw new Error('#app root missing');
 
 mountBootLoader();
 mountPage(app);
+startPortraitFloat(app);
 
 const toggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
 applyTheme(getTheme(), toggle);

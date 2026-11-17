@@ -18,6 +18,12 @@ coverage
 
 # Personal / sensitive local materials — never publish
 mbarek-elaadraoui/
+*.docx
+Profil-Image*.jpeg
+Profil-Image*.jpg
+/*M'barek*.pdf
+/*El Aadraoui*.pdf
+scripts/
 
 # Editor directories and files
 .vscode/*
