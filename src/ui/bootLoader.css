@@ -1,0 +1,46 @@
+/* Full-page gate until the ink theme toggle has GPU snapshots. */
+
+.boot-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 24px;
+  background: #f0e5d8;
+  color: #c84b31;
+  pointer-events: all;
+  transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.42s linear;
+}
+
+html[data-theme='dark'] .boot-loader {
+  background: #2e4052;
+  color: #a5c9ca;
+}
+
+.boot-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-loader__label {
+  font-family: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.72;
+}
+
+html.is-booting,
+html.is-booting body {
+  overflow: hidden;
+}
+
+html.is-booting #app {
+  visibility: hidden;
+}

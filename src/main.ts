@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import { mountPage } from './page/mount';
 import { startAutoMode } from './ui/autoMode';
+import { dismissBootLoader, mountBootLoader } from './ui/bootLoader';
+import './ui/bootLoader.css';
 import { DemoPanel, loadSettings } from './ui/demoPanel';
 import { applyLanguage, getLocale, type Locale } from './ui/i18n';
 import { InkTransition, SPREAD } from './ui/inkTransition';
@@ -9,6 +11,7 @@ import { applyTheme, getTheme } from './ui/theme';
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('#app root missing');
 
+mountBootLoader();
 mountPage(app);
 
 const toggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
@@ -25,6 +28,7 @@ const settings = loadSettings();
 
 // ?gl=0 forces the CSS fallback (what browsers without WebGL2 get).
 const ink = new InkTransition(canvas, toggle, { webgl: params.get('gl') !== '0' });
+void dismissBootLoader(ink.whenReady);
 
 let showMarker = settings.showMarker;
 const panel = new DemoPanel(ink, {

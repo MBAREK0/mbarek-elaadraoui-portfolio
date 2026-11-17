@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light" data-locale="en">
+<html lang="en" class="is-booting" data-theme="light" data-locale="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,9 +14,25 @@
     <style>
       html[data-theme='light'] { background: #f0e5d8; }
       html[data-theme='dark'] { background: #2e4052; }
+      html.is-booting, html.is-booting body { overflow: hidden; }
+      html.is-booting #app { visibility: hidden; }
+      #boot-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        display: grid;
+        place-items: center;
+        background: #f0e5d8;
+        color: #c84b31;
+      }
+      html[data-theme='dark'] #boot-loader {
+        background: #2e4052;
+        color: #a5c9ca;
+      }
     </style>
   </head>
   <body>
+    <div id="boot-loader" data-html2canvas-ignore role="status" aria-live="polite" aria-busy="true"></div>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

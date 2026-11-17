@@ -68,8 +68,15 @@ export class InkTransition {
   private needsDraft = true;
   private assetsReady = false;
   private qualityDone = false;
+  private readyResolved = false;
+  private readonly readyPromise: Promise<void>;
+  private resolveReady!: () => void;
 
   constructor(canvas: HTMLCanvasElement, toggleButton: HTMLButtonElement | null, opts: { webgl?: boolean } = {}) {
+    this.readyPromise = new Promise<void>((resolve) => {
+      this.resolveReady = resolve;
+    });
+
     this.toggleButton = toggleButton;
     this.icon = toggleButton ? new ThemeIcon(toggleButton) : null;
     this.icon?.set(getTheme());
@@ -77,6 +84,7 @@ export class InkTransition {
     this.renderer = opts.webgl === false ? null : InkRenderer.create(canvas);
     if (!this.renderer) {
       document.documentElement.dataset.ink = 'css';
+      this.markReady();
       return;
     }
     document.documentElement.dataset.ink = 'webgl';
@@ -98,6 +106,12 @@ export class InkTransition {
     }).observe(document.body);
     // Snapshots are skipped under reduced motion; take them if the preference is lifted.
     reducedMotion.addEventListener('change', () => this.scheduleCapture(0));
+
+    // No ink snapshots under reduced motion - page can show immediately.
+    if (reducedMotion.matches) {
+      this.markReady();
+      return;
+    }
 
     // Draft capture ASAP so the ink toggle works before multi‑MB photos finish.
     void import('html2canvas');
@@ -126,6 +140,22 @@ export class InkTransition {
 
   get isAnimating(): boolean {
     return this.frame !== null;
+  }
+
+  /** Resolves once both theme snapshots are ready (ink toggle can run). */
+  get whenReady(): Promise<void> {
+    return this.readyPromise;
+  }
+
+  get isReady(): boolean {
+    return this.readyResolved;
+  }
+
+  private markReady(): void {
+    if (this.readyResolved) return;
+    this.readyResolved = true;
+    this.bootstrapped = true;
+    this.resolveReady();
   }
 
   /** The most recent click, for "replay last click". */
@@ -385,9 +415,9 @@ export class InkTransition {
       const readyKey = layoutKey(renderScale());
       dualReady = renderer.hasValid('light', readyKey) && renderer.hasValid('dark', readyKey);
       if (dualReady) {
-        this.bootstrapped = true;
         if (draft) this.needsDraft = false;
         else this.qualityDone = true;
+        this.markReady();
       }
     } catch (err) {
       console.error('[ink] capture failed', err);
