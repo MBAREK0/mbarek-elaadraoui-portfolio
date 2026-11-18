@@ -19,7 +19,7 @@ const en: Dict = {
   'theme.toggle': 'Toggle dark mode (T)',
 
   'hero.eyebrow': 'Java full-stack · Morocco',
-  'hero.title': 'Building reliable systems<br /> for <em>real</em> production.',
+  'hero.title': 'Building reliable systems<br /><span class="hero__nowrap"> for <em>real</em> production</span>.',
   'hero.bio':
     'Java developer with hands-on experience on production Spring Boot systems - banking, trade finance, and IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, and AI/LLM integrations in live apps.',
   'hero.cta': 'See selected work',
@@ -127,7 +127,7 @@ const fr: Dict = {
   'theme.toggle': 'Basculer le mode sombre (T)',
 
   'hero.eyebrow': 'Full-stack Java · Maroc',
-  'hero.title': 'Des systèmes fiables<br /> pour la <em>vraie</em> production.',
+  'hero.title': 'Des systèmes fiables<br /><span class="hero__nowrap"> pour la <em>vraie</em> production</span>.',
   'hero.bio':
     'Développeur Java avec de l’expérience pratique sur des systèmes Spring Boot en production - banque, trade-finance et IAM. Java 17, Spring Boot 3, OAuth2/Keycloak, JPA/PostgreSQL, et intégration d’outils IA/LLM.',
   'hero.cta': 'Voir les projets',

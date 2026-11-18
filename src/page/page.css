@@ -402,7 +402,7 @@ html[data-theme='dark'] .hero__portrait-stage {
 }
 
 .hero__title {
-  max-width: 11.5em;
+  max-width: 14em;
   font-family: var(--font-display);
   font-size: clamp(40px, 6.2vw, 88px);
   font-weight: 380;
@@ -416,6 +416,11 @@ html[data-theme='dark'] .hero__portrait-stage {
   padding-right: 0.06em;
   font-weight: 340;
   color: var(--accent);
+}
+
+/* Keep the 2-line hero title stable (no mid-ink wrap flicker). */
+.hero__nowrap {
+  white-space: nowrap;
 }
 
 .hero__bio {
@@ -947,6 +952,10 @@ html[data-theme='dark'] .hero__portrait-stage {
   /* Hidden on small screens; titles include a space after <br> so words don't smash. */
   .hero__title br {
     display: none;
+  }
+
+  .hero__nowrap {
+    white-space: normal;
   }
 
   .about__grid {
