@@ -112,6 +112,10 @@ export async function capturePage(
       doc.querySelectorAll<HTMLElement>('[data-ink-live]').forEach((el) => {
         el.style.visibility = 'hidden';
       });
+      // Soft shadows rasterize inconsistently in html2canvas and ghost during ink.
+      doc.querySelectorAll<HTMLElement>('.hero__portrait').forEach((el) => {
+        el.style.boxShadow = 'none';
+      });
       if (draft) {
         // Keep the 16:9 frames, skip painting multi‑MB JPEGs for the first toggle.
         doc.querySelectorAll<HTMLImageElement>('.project__visual img').forEach((img) => {
