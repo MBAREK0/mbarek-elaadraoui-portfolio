@@ -1,3 +1,4 @@
+import { inject } from '@vercel/analytics';
 import gsap from 'gsap';
 import { mountPage } from './page/mount';
 import { startAutoMode } from './ui/autoMode';
@@ -7,6 +8,9 @@ import { DemoPanel, loadSettings } from './ui/demoPanel';
 import { applyLanguage, getLocale, type Locale } from './ui/i18n';
 import { InkTransition, SPREAD } from './ui/inkTransition';
 import { applyTheme, getTheme } from './ui/theme';
+
+// Vite/vanilla (not Astro): inject once on the client.
+inject();
 
 const app = document.querySelector<HTMLDivElement>('#app');
 if (!app) throw new Error('#app root missing');
